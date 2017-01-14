@@ -1,5 +1,5 @@
 [plugin]
 description = "dokku smoke test plugin"
-version = "0.3.0"
+version = "0.8.0"
 [plugin.config]
 testing = "true"
