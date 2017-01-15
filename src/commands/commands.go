@@ -23,17 +23,6 @@ Additional commands:`
 )
 
 func main() {
-	execPath := strings.Split(os.Args[0], "/")
-	executable := execPath[len(execPath)-1]
-	switch executable {
-	case "commands":
-		commands()
-	case "pre-deploy":
-		printMsg("pre-deploy")
-	}
-}
-
-func commands() {
 	flag.Usage = usage
 	flag.Parse()
 
@@ -44,7 +33,7 @@ func commands() {
 	case "help":
 		fmt.Print(helpContent)
 	case "smoke-test-plugin:test":
-		printMsg("commands")
+		fmt.Println("triggered smoke-test-plugin from: commands")
 	default:
 		dokkuNotImplementExitCode, err := strconv.Atoi(os.Getenv("DOKKU_NOT_IMPLEMENTED_EXIT"))
 		if err != nil {
@@ -63,8 +52,4 @@ func usage() {
 	content := strings.Split(helpContent, "\n")[1:]
 	fmt.Println(helpHeader)
 	fmt.Println(columnize.Format(content, config))
-}
-
-func printMsg(msg string) {
-	fmt.Printf("triggered smoke-test-plugin from: %s\n", msg)
 }
