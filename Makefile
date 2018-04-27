@@ -20,3 +20,6 @@ pre-deploy: **/**/pre-deploy.go
 
 clean:
 	rm -f commands pre-deploy
+
+src-clean:
+	rm -rf .editorconfig .gitignore src LICENSE Makefile README.md *.go
